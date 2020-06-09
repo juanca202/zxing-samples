@@ -1,0 +1,19 @@
+:host {
+  margin: -1.5rem;
+}
+button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+}
+video {
+  width: 100vw;
+  height: 100vh;
+}
+pre {
+  position: fixed;
+  bottom: 0;
+  left: 1rem;
+  width: calc(100vw - 2rem);
+}
