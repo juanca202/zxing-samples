@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, Output, ElementRef, EventEmitter } from '@angular/core';
 import { BrowserQRCodeReader } from '@zxing/library';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -16,7 +16,7 @@ export class ReaderPage implements OnInit, OnDestroy {
   capture: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private dialogRef: MatDialogRef<DocumentComponent>
+    private dialogRef: MatDialogRef<ReaderPage>
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +38,6 @@ export class ReaderPage implements OnInit, OnDestroy {
         codeReader
           .decodeOnceFromVideoDevice(undefined, video.id)
           .then(result => {
-            this.metadata.result = result.text;
             this.capture.emit(result);
           })
           .catch(err => console.error(err));
